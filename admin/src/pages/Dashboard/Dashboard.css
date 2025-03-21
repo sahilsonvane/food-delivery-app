@@ -1,0 +1,43 @@
+.dashboard{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard h2{
+    margin: 20px 0;
+    color: #505050;
+    font-weight: 500;
+}
+
+.dashboard-data {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.total{
+    flex: 1;
+    min-height: 200px;
+    border: 1px solid tomato;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffe8e4;
+}
+.total h2{
+    margin: 0;
+    text-align: center;
+}
+.total p {
+    font-size: max(2vw,26px);
+    color: #1f1e1e;
+    font-weight: 500;
+}

@@ -13,7 +13,8 @@ const MyOrders = () => {
     
     const fetchOrders = async ()=> {
         const res = await axios.post(url+"/api/order/userorders",{},{headers:{token}})
-        setData(res.data.data);
+        const tempData = res.data.data.sort((a,b)=> new Date(b.date) - new Date(a.date))
+        setData(tempData);
 
     }
 
@@ -23,7 +24,8 @@ const MyOrders = () => {
         }
     },[token])
 
-
+    console.log(data);
+    
     return (
     <div className='my-orders'>
         <h2>My Orders</h2>

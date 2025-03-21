@@ -35,3 +35,18 @@
 /* .place-order .cart-total button{
     margin-top: 30px;
 } */
+
+.payment-options{
+    margin: 20px 0;
+}
+.payment-option{
+    padding: 10px;
+    border: 1px solid tomato;
+    border-radius: 4px;
+    margin: 20px 0;
+    width: max(15vw, 200px);;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}

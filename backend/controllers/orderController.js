@@ -3,11 +3,11 @@ import userModel from "../models/userModel.js"
 import Stripe from "stripe"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const frontend_url = process.env.FRONTEND_URL;
     
 // placing user order from frontend
 const placeOrder = async (req,res) => {
 
-    const frontend_url = process.env.FRONTEND_URL;
 
     try {
         const newOrder = new orderModel({
@@ -60,6 +60,33 @@ const placeOrder = async (req,res) => {
         
     }
 }
+
+const cashOrder = async (req,res)=> {
+
+    try {
+         const newOrder = new orderModel({
+                userId: req.body.userId,
+                items: req.body.items,
+                amount: req.body.amount,
+                address: req.body.address,
+                paymentType: "Cash"
+            })
+    
+            await newOrder.save();
+            await userModel.findByIdAndUpdate(req.body.userId, {cartData:{}});
+
+            res.json({success: true, message:"Order Placed"})
+            
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message:"Cash order error!"})
+        
+    }
+}
+
+
+
+
 
 const verifyOrder = async (req,res) => {
 
@@ -119,4 +146,4 @@ const updateStatus = async (req,res) => {
 } 
 
 
-export {placeOrder, verifyOrder, userOrders, listOrders, updateStatus}
+export {placeOrder, verifyOrder, userOrders, listOrders, updateStatus, cashOrder}

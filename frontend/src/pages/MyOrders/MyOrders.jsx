@@ -13,8 +13,7 @@ const MyOrders = () => {
     
     const fetchOrders = async ()=> {
         const res = await axios.post(url+"/api/order/userorders",{},{headers:{token}})
-        const tempData = res.data.data.sort((a,b)=> new Date(b.date) - new Date(a.date))
-        setData(tempData);
+        setData(res.data.data);
 
     }
 
@@ -33,7 +32,11 @@ const MyOrders = () => {
             {data.map((order,index)=>{
                 return (
                     <div key={index} className='my-orders-order'>
+                        <div>
+
                         <img src={assests.parcel_icon} />
+                        <p>{order.orderId}</p>
+                        </div>
                         <p>{order.items.map((item,index)=>{
                             if(index === order.items.length - 1){
                                 return item.name+" x " +item.quantity

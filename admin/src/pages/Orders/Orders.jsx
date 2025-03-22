@@ -14,8 +14,9 @@ const Orders = ({url}) => {
   const fetchAllOrders = async ()=> {
       const res = await axios.get(url+"/api/order/list");
       if(res.data.success){
-        const decOrder = res.data.data.sort((a,b)=> new Date(b.date) - new Date(a.date)) 
-        setOrders(decOrder)
+        // sorting the order lists
+        // const decOrder = res.data.data.sort((a,b)=> new Date(b.date) - new Date(a.date)) 
+        setOrders(res.data.data)
         
       }else{
         toast.error("Something went wrong")
@@ -48,7 +49,10 @@ const Orders = ({url}) => {
       <div className="order-list">
         {orders.map((order,index)=>(
           <div className='order-item' key={index}>
+            <div>
             <img src={assests.parcel_icon} />
+            <p>{order.orderId}</p>
+            </div>
             <div>
               <p className="order-item-food">
                 {order.items.map((item,index)=>{

@@ -29,8 +29,18 @@ const PlaceOrder = () => {
     setData((data) => ({ ...data, [name]: value }));
   };
 
+  const generateOrderId = async ()=> {
+    let orderId = '';
+    const res = await axios.get(url + "/api/order/list");
+      if(res.data.success){
+        const totalOrder = res.data.data.length + 1;
+        orderId = totalOrder.toString().padStart(4, "0");
+      }
+    return `#${orderId}`
+}
   const placeOrder = async (event) => {
     event.preventDefault();
+    const orderID = await generateOrderId();
     let orderItems = [];
 
     food_list.map((item) => {
@@ -40,12 +50,15 @@ const PlaceOrder = () => {
         orderItems.push(itemInfo);
       }
     });
+    
+    
     let orderData = {
+      orderId: orderID,
       address: data,
       items: orderItems,
       amount: getTotalCartAmount() + 2,
     };
-
+    
     if(payment === "paid"){
       let response = await axios.post(url + "/api/order/place", orderData, {
         headers: { token },

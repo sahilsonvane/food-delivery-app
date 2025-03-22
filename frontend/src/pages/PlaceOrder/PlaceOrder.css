@@ -52,4 +52,9 @@
 .payment-option:first-child{
     margin-bottom: 20px;
 }
+
+.payment-option:hover{
+    background-color: #ffe1e1;
+    color: #454545;
+}
     

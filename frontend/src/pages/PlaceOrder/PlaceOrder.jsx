@@ -197,9 +197,7 @@ const PlaceOrder = () => {
             </div>
             <hr />
           </div>
-          <button type="submit">Proceed to Payment</button>
-        </div>
-        <div className="payment-options">
+          <div className="payment-options">
             <div onClick={()=> setPayment("cash")} className="payment-option">
               <img src={payment ==="cash" ? assets.selector_icon: assets.faded_selector_icon} />
               <p>COD (Cash On Delivery)</p>
@@ -210,6 +208,9 @@ const PlaceOrder = () => {
               <p>Stipe (Credit/Debit)</p>
           </div>
         </div>
+          <button type="submit">Proceed to Payment</button>
+        </div>
+        
       </div>
     </form>
   );

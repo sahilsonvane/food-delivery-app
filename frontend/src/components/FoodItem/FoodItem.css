@@ -62,5 +62,27 @@
     background-color: #fff;
 }
 .food-item-counter img{
-    width: 30px;
+    width: 30px ;
+}
+.food-item-cart-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.food-item-cart-btn button{
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: tomato;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.food-item-cart-btn button:hover{
+    background-color: #ffe1e1;
+    color: tomato;
+    border: 1px solid tomato;
 }

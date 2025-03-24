@@ -1,3 +1,4 @@
+import { log } from "console";
 import foodModel from "../models/foodModel.js";
 
 import fs from 'fs';
@@ -42,6 +43,17 @@ const listFood = async (req,res) => {
 
 
 }
+// load food details
+
+// const foodDetails = async (req,res) => {
+//     try {
+//          const foodData = await foodModel.findById(req.body.foodId)   
+//     } catch (error) {
+//         console.log("foodDetail Error: ", error)
+//         res.json({success:false, message: "Error"})
+//     }
+// }
+
 
 //  remove food item 
 const removeFood = async (req,res) =>{

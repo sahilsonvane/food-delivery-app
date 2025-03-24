@@ -84,11 +84,36 @@ const PlaceOrder = () => {
     
   };
 
+  const fetchAddress = async ()=> {
+
+    const res = await axios.post(url+"/api/order/userorders",{},{headers:{token}})
+
+    if (res.data.data.length > 0){
+    const userAddress = res.data.data[res.data.data.length - 1 ? res.data.data.length - 1 : 0].address
+    setData((prev)=> ({...prev,
+    ["firstName"]: userAddress.firstName,
+    ["lastName"]: userAddress.lastName,
+    ["email"]: userAddress.email,
+    ["street"]: userAddress.street,
+    ["city"]: userAddress.city,
+    ["state"]: userAddress.state,
+    ["zipcode"]: userAddress.zipcode,
+    ["country"]: userAddress.country,
+    ["phone"]: userAddress.phone,
+    }))
+    
+  }
+
+}
+
   useEffect(() => {
     if (!token) {
       navigate("/cart");
     } else if (getTotalCartAmount() === 0) {
       navigate("/cart");
+    }
+    if(token){
+      fetchAddress();
     }
   }, [token]);
 

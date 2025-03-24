@@ -2,9 +2,9 @@
     height: 34vw;
     margin : 30px auto ;
     background: url("/header_img.png") no-repeat;
-    background-size: contain;
+    background-size: cover;
     position: relative;
-
+    border-radius: 18px;
 }
 .header-contents{
     position: absolute;

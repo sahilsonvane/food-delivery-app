@@ -33,3 +33,10 @@ a {
       opacity: 1;
     }
 }
+
+@media (max-width: 750px){
+  .app{
+    width: 90%;
+    margin: auto;
+  }
+}

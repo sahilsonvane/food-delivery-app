@@ -9,6 +9,7 @@ const StoreContextProvider = (props) => {
   const url = "https://food-delivery-backend-t4ux.onrender.com";
   const [token, setToken] = useState("")
   const [food_list, setFood_List] = useState([])
+  const [userData, setUserData] = useState([])
 
   // add item to cart function
   const addToCart = async (itemId) => {
@@ -79,6 +80,8 @@ const StoreContextProvider = (props) => {
     url,
     token,
     setToken,
+    userData,
+    setUserData
     
   };
 
